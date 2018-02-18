@@ -7,8 +7,9 @@ if [ -f /etc/squid/squid.conf ]; then
     mv /etc/squid/squid.conf /etc/squid/squid`date +"%Y%m%d%H%M%S"`.conf
 fi
 cp ./squid.conf /etc/squid/
-if [ ! -d /etc/squid/squid.conf.d ]
+if [ ! -d /etc/squid/squid.conf.d ] then
     mkdir /etc/squid/squid.conf.d
 fi
 cp -f ./*.list /etc/squid/squid.conf.d/
 cp -f ./adblock-updater.sh /etc/squid/squid.conf.d/
+service squid restart
